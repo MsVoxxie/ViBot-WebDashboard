@@ -14,6 +14,7 @@ export function Menu( {
         getUserDetails()
         .then(({data}) => {
             setUser(data);
+            console.log(user);
             setLoading(false);
             return getGuilds()
         }).then(({data}) => {
@@ -27,7 +28,7 @@ export function Menu( {
 
     return !loading && (
         <div>
-            <h1>Menu</h1>
+            <h1>Menu Page</h1>
             <MenuComponent guilds ={guilds}/>
         </div>
     );
