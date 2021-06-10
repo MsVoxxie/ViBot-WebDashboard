@@ -25,11 +25,7 @@ export function Menu({ history }) {
 
   return (
     !loading && (
-      <div>
-        <h1>Welcome {user.discordTag}</h1>
-        <img src={user.avatar} alt={user.discordTag} />
-        <MenuComponent guilds={guilds} />
-      </div>
+        <MenuComponent guilds={guilds} />    
     )
   );
 }

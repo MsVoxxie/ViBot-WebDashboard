@@ -1,38 +1,35 @@
-// import { Button } from '@chakra-ui/react'
+import { textDecoration } from "@chakra-ui/styled-system";
 import { Link } from "react-router-dom";
 export function MenuComponent({ guilds }) {
   return (
-    <body>
-      <div className="guild-container">
-        <h1>Configure Guilds</h1>
-        {guilds.included.map((guild) => (
-          <div className="guild-item" key={guild.name}>
-            <div className="guild">
-              <h1>{guild.name}</h1>
-              <Link to={`/dashboard/${guild.id}`}>View Dashboard</Link>
-              {/* <img src={`https://cdn.discordapp.com/${guild.icon}`} alt='' /> */}
+    <div className='body'>
+      <main className='guildList'>
+        {guilds.included.sort((a, b) => (a.name > b.name) ? 1 : -1).map((guild) => {
+          return (
+          <div key={guild.name} className='guildContainer'>
+            <div className='guildItem'>
+              <img className='guildAvatar' src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} alt="" />
+              <span className='guildName'>{guild.name}</span>
             </div>
+            <button className='guildButton dashboard'>
+            <Link to={`/dashboard/${guild.id}`} className='noDeco'>View Dashboard</Link>
+            </button>
           </div>
-        ))}
-      </div>
+          );
+        })}
 
-      <div className="bot-container">
-        <h1>Configure Bot</h1>
-        {guilds.excluded.map((guild) => (
-          <div className="guild-item" key={guild.name}>
-            <div className="guild">
-              <h1>{guild.name}</h1>
-              <a
-                href={
-                  "https://discord.com/oauth2/authorize?client_id=827375161665650689&scope=bot&permissions=2419453143"
-                }
-              >
-                Invite Bot
-              </a>
+        {guilds.excluded.sort((a, b) => (a.name > b.name) ? 1 : -1).map((guild) => {
+          return (
+          <div key={guild.name} className='guildContainer'>
+            <div className='guildItem'>
+              <img className='guildAvatar' src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} alt="" />
+              <span className='guildName'>{guild.name}</span>
             </div>
+            <button className='guildButton invite' onClick={() => (window.open("https://discord.com/oauth2/authorize?client_id=827375161665650689&scope=bot&permissions=2419453143", "name", "width=500, height=680"))}>Invite ViBot</button>
           </div>
-        ))}
-      </div>
-    </body>
+          );
+        })}
+      </main> 
+    </div>
   );
 }

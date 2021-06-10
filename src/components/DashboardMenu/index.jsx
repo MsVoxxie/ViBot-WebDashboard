@@ -1,16 +1,18 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Input, Button, Select } from '@chakra-ui/react';
 import { updateGuild } from '../../utils/api';
-import { setupOptions } from '../../utils/functions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function DashboardMenu({ config }) {
 	return (
+	<div className='box'>
+		<h1>Editing {config.guildname}</h1>
 		<div className='menu-container'>
-			<div className='menu-selectors'>
-				<h1>Editing {config.guildname}</h1>
+			<div className='col'>
 				{/* Prefix */}
-				<h1>Prefix</h1>
+			<div className='menu-item'>
+				<h2>Prefix</h2>
 				<Formik
 					initialValues={{ prefix: config.prefix }}
 					onSubmit={({ prefix }) => {
@@ -18,23 +20,86 @@ export function DashboardMenu({ config }) {
 					}}>
 					{(props) => (
 						<form onSubmit={props.handleSubmit}>
-							<Input
-								type='text'
-								name='prefix'
-								onChange={props.handleChange}
-								defaultValue={config.prefix}
-							/>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update prefix'
-							/>
+							<input className='inputField' type='text' name='prefix' onChange={props.handleChange} defaultValue={config.prefix} />
+							<button type='submit' onClick={() => toast.success('✅ Updated Prefix', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Prefix</button>
+							<ToastContainer/>
 						</form>
 					)}
 				</Formik>
+			</div>
 
-				{/* Guild Color */}
-				<h1>Guild Color</h1>
+				{/* Prune */}
+				<div className='menu-item'>
+				<h2>Prune</h2>
+				<Formik
+					initialValues={{ prune: config.prune }}
+					onSubmit={(prune) => {
+						console.log(prune, config);
+						updateGuild(config.guildid, 'prune', prune);
+					}}>
+					{(props) => (
+						<form onSubmit={props.handleSubmit}>
+							<select name='prune' defaultValue={config.prune} onChange={props.handleChange}>
+								<option value='true'>true</option>
+								<option value='false'>false</option>
+							</select>
+							<button type='submit' onClick={() => toast.success('✅ Updated Prune', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Prune</button>
+							<ToastContainer/>
+						</form>
+					)}
+				</Formik>
+				</div>
+
+				{/* Audit */}
+				<div className='menu-item'>
+				<h2>Audit</h2>
+				<Formik
+					initialValues={{ audit: config.audit }}
+					onSubmit={(audit) => {
+						console.log(audit, config);
+						updateGuild(config.guildid, 'audit', audit);
+					}}>
+					{(props) => (
+						<form onSubmit={props.handleSubmit}>
+						<select name='audit' defaultValue={config.audit} onChange={props.handleChange}>
+							<option value='true'>true</option>
+							<option value='false'>false</option>
+						</select>
+						<button type='submit' onClick={() => toast.success('✅ Updated Audit', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Audit</button>
+							<ToastContainer/>
+					</form>
+					)}
+				</Formik>
+				</div>
+
+				{/* Welcome */}
+				<div className='menu-item'>
+				<h2>Welcome</h2>
+				<Formik
+					initialValues={{ welcome: config.welcome }}
+					onSubmit={(welcome) => {
+						console.log(welcome, config);
+						updateGuild(config.guildid, 'welcome', welcome);
+					}}>
+					{(props) => (
+						<form onSubmit={props.handleSubmit}>
+						<select name='welcome' defaultValue={config.welcome} onChange={props.handleChange}>
+							<option value='true'>true</option>
+							<option value='false'>false</option>
+						</select>
+						<button type='submit' onClick={() => toast.success('✅ Updated Welcome', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Welcome</button>
+							<ToastContainer/>
+					</form>
+					)}
+				</Formik>
+				</div>
+			</div>
+
+			<div className='col'>
+
+			{/* Guild Color */}
+			<div className='menu-item'>
+				<h2>Guild Color</h2>
 				<Formik
 					initialValues={{ guildcolor: config.guildcolor }}
 					onSubmit={({ guildcolor }) => {
@@ -42,75 +107,17 @@ export function DashboardMenu({ config }) {
 					}}>
 					{(props) => (
 						<form onSubmit={props.handleSubmit}>
-							<Input
-								type='color'
-								name='guildcolor'
-								onChange={props.handleChange}
-								defaultValue={config.guildcolor}
-							/>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update guildcolor'
-							/>
+							<input className='colorPicker' type='color' name='guildcolor' onChange={props.handleChange} defaultValue={config.guildcolor} />
+							<button type='submit' onClick={() => toast.success('✅ Updated Guildcolor', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Guildcolor</button>
+							<ToastContainer/>
 						</form>
 					)}
 				</Formik>
-
-				{/* Prune */}
-				<h1>Prune</h1>
-				<Formik
-					initialValues={{ prune: '' }}
-					onSubmit={(prune) => {
-						console.log(prune, config);
-						updateGuild(config.guildid, 'prune', prune);
-					}}>
-					{(props) => (
-						<form onSubmit={props.handleSubmit}>
-							<Select
-								name='prune'
-								defaultValue={config.prune}
-								onChange={props.handleChange}>
-								<option value='true'>true</option>
-								<option value='false'>false</option>
-							</Select>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update prune'
-							/>
-						</form>
-					)}
-				</Formik>
-
-				{/* Audit */}
-				<h1>Audit</h1>
-				<Formik
-					initialValues={{ audit: '' }}
-					onSubmit={(audit) => {
-						console.log(audit, config);
-						updateGuild(config.guildid, 'audit', audit);
-					}}>
-					{(props) => (
-						<form onSubmit={props.handleSubmit}>
-							<Select
-								name='audit'
-								defaultValue={config.audit}
-								onChange={props.handleChange}>
-								<option value='true'>true</option>
-								<option value='false'>false</option>
-							</Select>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update audit'
-							/>
-						</form>
-					)}
-				</Formik>
+			</div>
 
 				{/* AuditChannel */}
-				<h1>Audit Channel</h1>
+				<div className='menu-item'>
+				<h2>Audit Channel</h2>
 				<Formik
 					initialValues={{ auditchannel: '' }}
 					onSubmit={(auditchannel) => {
@@ -119,10 +126,7 @@ export function DashboardMenu({ config }) {
 					}}>
 					{(props) => (
 						<form onSubmit={props.handleSubmit}>
-							<Select
-								name='auditchannel'
-								defaultValue={config.auditchannel}
-								onChange={props.handleChange}>
+							<select name='auditchannel' defaultValue={config.auditchannel} onChange={props.handleChange}>
 								{config.channels.map((objects, index) => {
 									return (
 										// Name of Category
@@ -141,44 +145,18 @@ export function DashboardMenu({ config }) {
 										</optgroup>
 									);
 								})}
-							</Select>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update auditchannel'
-							/>
+								<optgroup key='Clear' label='Reset Channel'><option key='none' value=''>Unset Channel</option></optgroup>
+							</select>
+							<button type='submit' onClick={() => toast.success('✅ Updated Auditchannel', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Auditchannel</button>
+							<ToastContainer/>
 						</form>
 					)}
 				</Formik>
-
-				{/* Welcome */}
-				<h1>Welcome</h1>
-				<Formik
-					initialValues={{ welcome: '' }}
-					onSubmit={(welcome) => {
-						console.log(welcome, config);
-						updateGuild(config.guildid, 'welcome', welcome);
-					}}>
-					{(props) => (
-						<form onSubmit={props.handleSubmit}>
-							<Select
-								name='welcome'
-								defaultValue={config.welcome}
-								onChange={props.handleChange}>
-								<option value='true'>true</option>
-								<option value='false'>false</option>
-							</Select>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update welcome'
-							/>
-						</form>
-					)}
-				</Formik>
+				</div>
 
 				{/* WelcomeChannel */}
-				<h1>Welcome Channel</h1>
+				<div className='menu-item'>
+				<h2>Welcome Channel</h2>
 				<Formik
 					initialValues={{ welcomechannel: '' }}
 					onSubmit={(welcomechannel) => {
@@ -187,10 +165,7 @@ export function DashboardMenu({ config }) {
 					}}>
 					{(props) => (
 						<form onSubmit={props.handleSubmit}>
-							<Select
-								name='welcomechannel'
-								defaultValue={config.welcomechannel}
-								onChange={props.handleChange}>
+							<select name='welcomechannel' defaultValue={config.welcomechannel} onChange={props.handleChange}>
 								{config.channels.map((objects, index) => {
 									return (
 										// Name of Category
@@ -209,18 +184,18 @@ export function DashboardMenu({ config }) {
 										</optgroup>
 									);
 								})}
-							</Select>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update welcomechannel'
-							/>
+								<optgroup key='Clear' label='Reset Channel'><option key='none' value=''>Unset Channel</option></optgroup>
+							</select>
+							<button type='submit' onClick={() => toast.success('✅ Updated Welcomechannel', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Welcomechannel</button>
+							<ToastContainer/>
 						</form>
 					)}
 				</Formik>
+				</div>
 
 				{/* RulesChannel */}
-				<h1>Rules Channel</h1>
+				<div className='menu-item'>
+				<h2>Rules Channel</h2>
 				<Formik
 					initialValues={{ ruleschannel: '' }}
 					onSubmit={(ruleschannel) => {
@@ -229,10 +204,7 @@ export function DashboardMenu({ config }) {
 					}}>
 					{(props) => (
 						<form onSubmit={props.handleSubmit}>
-							<Select
-								name='ruleschannel'
-								defaultValue={config.ruleschannel}
-								onChange={props.handleChange}>
+							<select name='ruleschannel' defaultValue={config.ruleschannel} onChange={props.handleChange}>
 								{config.channels.map((objects, index) => {
 									return (
 										// Name of Category
@@ -251,16 +223,16 @@ export function DashboardMenu({ config }) {
 										</optgroup>
 									);
 								})}
-							</Select>
-							<Button
-								type='submit'
-								colorScheme='orange'
-								children='Update ruleschannel'
-							/>
+								<optgroup key='Clear' label='Reset Channel'><option key='none' value=''>Unset Channel</option></optgroup>
+							</select>
+							<button type='submit' onClick={() => toast.success('✅ Updated Ruleschannel', {position: "top-left",autoClose: 3000,hideProgressBar: true,closeOnClick: false,pauseOnHover: false,draggable: false,progress: undefined,})}>Update Ruleschannel</button>
+							<ToastContainer/>
 						</form>
 					)}
 				</Formik>
+				</div>
 			</div>
+		</div>
 		</div>
 	);
 }

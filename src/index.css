@@ -1,13 +1,328 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ALL */
+* {
+  box-sizing: border-box;
+  border: 0px none;
+
+  font-size: 100%;
+  font-family: Poppins;
+  font-style: inherit;
+  margin: 0px;
+  outline: currentColor none 0px;
+  vertical-align: baseline;
 }
+
+body {
+  background: rgb(16, 16, 16);
+  color: rgb(239, 239, 239);
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
+/* NAVIGATION */
+nav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+main {
+  padding: 10px;
+  height: 200px;
+}
+
+footer {
+  font-size: small;
+  width: 100%;
+  margin-top: 40px;
+  padding: 20px;
+  background-color: black;
+}
+
+h2 {
+  width: 100%;
+  display: block;
+}
+
+/* Forms */
+
+form {
+  color: black;
+  border: 5px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input {
+  
+}
+
+input[type=text] {
+  width: 8em;
+  padding: 4px 8px;
+  margin: 8px;
+  box-sizing: border-box;
+
+  border-radius: 4px;
+  border-color: gray;
+}
+
+input[type=color] {
+  background-color: transparent;
+  border: 0px none;
+  width: 64px;
+  height: 48px;
+  padding: 0;
+  margin: 8px;
+}
+
+select {
+  padding: 4px 8px;
+  margin: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+
+/* button {
+  background-color: green;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+  border-radius: 2px;
+  
+
+  padding: 8px 8px;
+  margin: 2px;
+  
+  color: white;
+  text-decoration: none;
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a.noDeco {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.box {
+  height: 95vh;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.menu-container {
+  display: flex;
+  margin: auto;
+  width: fit-content;
+  justify-content: center;
+}
+
+.menu-item {
+  height: 200px;
+  width: 300px;
+  background-color: #323232;
+  border: 2px solid #646464;
+  border-radius: 8px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* width: auto; */
+}
+
+.col {
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.selection {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+/* Guild Listing */
+
+/* .guild-container {
+  padding: 20px;
+  min-width: 200px;
+  height: 10px;
+  width: fit-content;
+  display: block;
+  justify-content: center;
+  align-items: auto;
+  align-content: start;
+  float: left;
+}
+
+.bot-container {
+  padding: 20px;
+  min-width: 200px;
+  height: 10px;
+  width: fit-content;
+  display: block;
+  justify-content: center;
+  align-items: auto;
+  align-content: start;
+  float: right;
+} */
+
+.container {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  padding: 0.5em;
+  align-self: stretch;
+}
+
+.guild {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.guild:hover {
+  background-color: #323232;
+  transition: ease-in-out 0.2s;
+}
+
+.guild-item {
+  flex: 0 0 auto;
+  margin: 8px;
+}
+
+/* Guild List */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  box-align: center;
+  align-items: center;
+  padding: 20px 0px;
+  max-width: 800px;
+  margin: auto;
+}
+
+main.guildList {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  padding: 0px 0.5em;
+  align-self: stretch;
+}
+
+div.guildContainer {
+  display: flex;
+  flex: 1 1 0%;
+  height: 60%;
+  box-align: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+div.guildContainer:hover {
+  background-color: #2a2e312e;
+  transition: ease-in-out 0.2s;
+}
+
+div.guildItem {
+  display: flex;
+  flex-flow: row wrap;
+  box-align: center;
+  box-pack: start;
+  justify-content: flex-start;
+}
+
+img.guildAvatar {
+  width: 50px;
+  height: 50px;
+  border: solid 2px rgba(150, 150, 150, 0.5);
+  border-radius: 50%;
+  flex-shrink: 0;
+  vertical-align: baseline;
+}
+
+span.guildName {
+  color: lightgrey;
+  font-weight: bold;
+  font-size: 16px;
+  text-overflow: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 14px 8px;
+  flex: 1 0 1em;
+}
+
+button.guildButton {
+  white-space: nowrap;
+  user-select: none;
+  line-height: 1;
+  display: flex;
+  border-radius: 3px;
+  box-pack: center;
+  justify-content: center;
+  box-align: center;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+button.dashboard {
+  color: black;
+  background-color: lightblue;
+  transition: ease-in 0.2s;
+}
+
+button.dashboard:hover {
+  background-color: #4b95db;
+  transition: ease-in 0.2s;
+}
+
+button.invite {
+  color: white;
+  background-color: #d3a72f;
+  transition: ease-in 0.2s;
+}
+
+button.invite:hover {
+  background-color: rgb(158, 138, 73);
+  transition: ease-in 0.2s;
 }
