@@ -1,4 +1,3 @@
-import { textDecoration } from "@chakra-ui/styled-system";
 import { Link } from "react-router-dom";
 export function MenuComponent({ guilds }) {
   return (
