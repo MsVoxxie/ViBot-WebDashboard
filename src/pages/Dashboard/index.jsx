@@ -2,7 +2,10 @@ import React from "react";
 import { getGuildConfig, getUserDetails } from "../../utils/api";
 import { DashboardMenu } from "../../components";
 
-export function Dashboard({ history, match }) {
+export function Dashboard({
+  history,
+  match
+}) {
   const [user, setUser] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [config, setConfig] = React.useState({});
@@ -21,7 +24,7 @@ export function Dashboard({ history, match }) {
         history.push("/");
         setLoading(false);
       });
-  }, []);
+  });
 
   return (
     !loading && (
