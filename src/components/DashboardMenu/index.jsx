@@ -34,7 +34,6 @@ export function DashboardMenu({ config }) {
 				<Formik
 					initialValues={{ prune: config.prune }}
 					onSubmit={(prune) => {
-						console.log(prune, config);
 						updateGuild(config.guildid, 'prune', prune);
 					}}>
 					{(props) => (
@@ -56,7 +55,6 @@ export function DashboardMenu({ config }) {
 				<Formik
 					initialValues={{ audit: config.audit }}
 					onSubmit={(audit) => {
-						console.log(audit, config);
 						updateGuild(config.guildid, 'audit', audit);
 					}}>
 					{(props) => (
@@ -78,7 +76,6 @@ export function DashboardMenu({ config }) {
 				<Formik
 					initialValues={{ welcome: config.welcome }}
 					onSubmit={(welcome) => {
-						console.log(welcome, config);
 						updateGuild(config.guildid, 'welcome', welcome);
 					}}>
 					{(props) => (
@@ -121,7 +118,6 @@ export function DashboardMenu({ config }) {
 				<Formik
 					initialValues={{ auditchannel: '' }}
 					onSubmit={(auditchannel) => {
-						console.log(auditchannel, config);
 						updateGuild(config.guildid, 'auditchannel', auditchannel);
 					}}>
 					{(props) => (
@@ -160,7 +156,6 @@ export function DashboardMenu({ config }) {
 				<Formik
 					initialValues={{ welcomechannel: '' }}
 					onSubmit={(welcomechannel) => {
-						console.log(welcomechannel, config);
 						updateGuild(config.guildid, 'welcomechannel', welcomechannel);
 					}}>
 					{(props) => (
@@ -199,7 +194,6 @@ export function DashboardMenu({ config }) {
 				<Formik
 					initialValues={{ ruleschannel: '' }}
 					onSubmit={(ruleschannel) => {
-						console.log(ruleschannel, config);
 						updateGuild(config.guildid, 'ruleschannel', ruleschannel);
 					}}>
 					{(props) => (

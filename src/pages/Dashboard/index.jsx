@@ -4,7 +4,7 @@ import { DashboardMenu } from "../../components";
 
 export function Dashboard({
   history,
-  match
+  match,
 }) {
   const [user, setUser] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -24,7 +24,7 @@ export function Dashboard({
         history.push("/");
         setLoading(false);
       });
-  });
+  }, [history, match]);
 
   return (
     !loading && (

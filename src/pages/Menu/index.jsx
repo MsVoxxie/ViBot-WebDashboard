@@ -24,11 +24,14 @@ export function Menu({
         history.push("/");
         setLoading(false);
       });
-  });
+  }, [history]);
 
   return (
+    loading && (
+      <h1>t</h1>
+    ),
     !loading && (
-        <MenuComponent user={user} guilds={guilds} />    
+        <MenuComponent guilds={guilds} user={user} />    
     )
   );
 }
