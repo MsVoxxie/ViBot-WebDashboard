@@ -175,7 +175,7 @@ export function DashboardMenu({ config }) {
 									<form onSubmit={props.handleSubmit}>
 										<Heading size='md'>Welcome</Heading>
 										<Flex justify='center'>
-											<Select ml={2} name='prune' onChange={props.handleChange} placeholder={`Currently ${config.welcome === true ? 'Enabled' : 'Disabled'}`}>
+											<Select ml={2} name='welcome' onChange={props.handleChange} placeholder={`Currently ${config.welcome === true ? 'Enabled' : 'Disabled'}`}>
 												<option value='true'>Enabled</option>
 												<option value='false'>Disabled</option>
 											</Select>
@@ -198,7 +198,7 @@ export function DashboardMenu({ config }) {
 								updateGuild(config.guildid, 'auditchannel', auditchannel);
 								toast({
 									title: "Success!",
-									description: `Audit Channel id set to ${auditchannel}`,
+									description: `Audit Channel id set to ${auditchannel.length > 0 ? auditchannel : 'Null'}`,
 									status: "success",
 									duration: 3000,
 									isClosable: false,
@@ -249,7 +249,7 @@ export function DashboardMenu({ config }) {
 								updateGuild(config.guildid, 'welcomechannel', welcomechannel);
 								toast({
 									title: "Success!",
-									description: `Welcome Channel id set to ${welcomechannel}`,
+									description: `Welcome Channel id set to ${welcomechannel.length > 0 ? welcomechannel : 'Null'}`,
 									status: "success",
 									duration: 3000,
 									isClosable: false,
@@ -300,7 +300,7 @@ export function DashboardMenu({ config }) {
 								updateGuild(config.guildid, 'ruleschannel', ruleschannel);
 								toast({
 									title: "Success!",
-									description: `Rules Channel id set to ${ruleschannel}`,
+									description: `Rules Channel id set to ${ruleschannel.length > 0 ? ruleschannel : 'Null'}`,
 									status: "success",
 									duration: 3000,
 									isClosable: false,
