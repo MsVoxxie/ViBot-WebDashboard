@@ -7,7 +7,7 @@ import { useColorModeValue } from '@chakra-ui/color-mode';
 
 export function DashboardMenu({ config }) {
 
-	const formBackground = useColorModeValue("gray.100", "gray.700");
+	const formBackground = useColorModeValue("gray.200", "gray.700");
 	const toast = useToast()
 
 	return (

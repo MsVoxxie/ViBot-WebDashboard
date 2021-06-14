@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export function MenuComponent({ guilds }) {
 
-  const formBackground = useColorModeValue("gray.100", "gray.700");
+  const formBackground = useColorModeValue("gray.200", "gray.700");
 
   if(guilds.included.length === 0 && guilds.excluded.length === 0){
     return (

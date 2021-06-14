@@ -5,7 +5,7 @@ import TextLoop from "react-text-loop";
 export function LandingComponent( { bot }) {
 
     const { toggleColorMode } = useColorMode();
-    const formBackground = useColorModeValue("gray.100", "gray.700");
+    const formBackground = useColorModeValue("gray.200", "gray.700");
 
     const login = () => (window.location.href = "https://api.voxxie.me:3001/api/auth/discord/");
     
@@ -25,6 +25,7 @@ export function LandingComponent( { bot }) {
                     <Heading size='sm'>Audit Changes</Heading>
                     <Heading size='sm'>Have Fun</Heading>
                     <Heading size='sm'>Moderate</Heading>
+                    <Heading size='sm'>Pridify Avatars</Heading>
                 </TextLoop>
                 </Flex>
                 <Flex justify='center' direction='column' alignItems='center'>
