@@ -28,9 +28,7 @@ export function Dashboard({
 
   return (
     !loading && (
-      <div>
         <DashboardMenu user={user} config={config} />
-      </div>
     )
   );
 }

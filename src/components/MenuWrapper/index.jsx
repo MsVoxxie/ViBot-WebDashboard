@@ -1,34 +1,60 @@
+import React from 'react';
+import { Avatar, Box, Button, Center, Flex, Heading, Spacer } from '@chakra-ui/react';
+import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Link } from "react-router-dom";
+
 export function MenuComponent({ guilds }) {
-  return (
-    <div className='body'>
-      <main className='guildList'>
+
+  const formBackground = useColorModeValue("gray.100", "gray.700");
+
+  if(guilds.included.length && guilds.excluded.length){
+    return (
+        <Flex justify='center' alignItems='center' direction='column'>
+        <Flex justify='center' m={6}>
+          <Heading>Please Select a Guild</Heading>
+        </Flex>
         {guilds.included.sort((a, b) => (a.name > b.name) ? 1 : -1).map((guild) => {
           return (
-          <div key={guild.name} className='guildContainer'>
-            <div className='guildItem'>
-              <img className='guildAvatar' src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} alt="" />
-              <span className='guildName'>{guild.name}</span>
-            </div>
-            <button className='guildButton dashboard'>
-            <Link to={`/dashboard/${guild.id}`} className='noDeco'>View Dashboard</Link>
-            </button>
-          </div>
+            <Flex mb={2} justify='center'>
+                <Box bg={formBackground} rounded={6} minWidth='450px' width='40vw'>
+                    <Flex justify='center' alignItems='center' justifyContent='space-around'>
+                        <Avatar m={2} src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} />
+                        <Heading size='md'>{guild.name}</Heading>
+                        <Spacer/>
+                        <Button m={2}>
+                          <Link to={`/dashboard/${guild.id}`}>View Dashboard</Link>
+                        </Button>
+                    </Flex>
+                </Box>
+            </Flex>
           );
         })}
 
         {guilds.excluded.sort((a, b) => (a.name > b.name) ? 1 : -1).map((guild) => {
           return (
-          <div key={guild.name} className='guildContainer'>
-            <div className='guildItem'>
-              <img className='guildAvatar' src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} alt="" />
-              <span className='guildName'>{guild.name}</span>
-            </div>
-            <button className='guildButton invite' onClick={() => (window.open("https://discord.com/oauth2/authorize?client_id=827375161665650689&scope=bot&permissions=2419453143", "name", "width=500, height=680"))}>Invite ViBot</button>
-          </div>
+            <Flex mb={2} justify='center'>
+                <Box bg={formBackground} rounded={6} minWidth='450px' width='40vw'>
+                    <Flex justify='center' alignItems='center' justifyContent='space-around'>
+                        <Avatar m={2} src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} />
+                        <Heading size='md'>{guild.name}</Heading>
+                        <Spacer/>
+                        <Button m={2} onClick={() => (window.open("https://discord.com/oauth2/authorize?client_id=827375161665650689&scope=bot&permissions=2419453143", "name", "width=500, height=680"))}>Invite ViBot</Button>
+                    </Flex>
+                </Box>
+            </Flex>
           );
         })}
-      </main> 
-    </div>
-  );
+      </Flex>
+    )
+  }else{
+    return (
+    <Flex height='100vh' alignItems='center' justifyContent='center'>
+      <Box bg={formBackground} rounded={6}>
+          <Center m={2}>
+            Unfortunately... You have no guilds with the correct permissions.
+          </Center>
+      </Box>
+    </Flex>
+    )
+  }
 }

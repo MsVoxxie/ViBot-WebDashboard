@@ -1,15 +1,35 @@
 import React from "react";
+import { LandingComponent } from "../../components";
+import { getBotDetails, getUserDetails } from "../../utils/api";
 
-export function Landing(props) {
-  const login = () => (window.location.href = "http://143.59.19.68:3001/api/auth/discord/");
+export function Landing({
+  history,
+}) {
+
+  const [user, setUser] = React.useState(null);
+  const [bot, setBot] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    getBotDetails()
+    .then(({ data }) => {
+      setBot(data);
+      return getUserDetails();
+    })
+    .then(({ data }) => {
+      setUser(data);
+      history.push('/menu')
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.log(err);
+      setLoading(false);
+    });
+  }, [history]);
+
   return (
-    <button className='Login' onClick={login}>Login</button>
+    !loading && (
+      <LandingComponent bot={bot} user={user} />
+    )
   );
 }
-
-// export function Landing(props) {
-//   const login = () => (window.open("http://143.59.19.68:3001/api/auth/discord/", "name", "width=500, height=860"));
-//   return (
-//     <button className='Login' onClick={login} target='popup'>Login</button>
-//   );
-// }

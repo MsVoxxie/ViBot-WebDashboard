@@ -1,5 +1,6 @@
 import React from "react";
 import { MenuComponent } from "../../components";
+import { Flex, Spinner, Center } from '@chakra-ui/react';
 import { getGuilds, getUserDetails } from "../../utils/api";
 
 export function Menu({ 
@@ -27,9 +28,6 @@ export function Menu({
   }, [history]);
 
   return (
-    loading && (
-      <h1>t</h1>
-    ),
     !loading && (
         <MenuComponent guilds={guilds} user={user} />    
     )
