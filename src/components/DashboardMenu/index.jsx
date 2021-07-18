@@ -341,6 +341,108 @@ export function DashboardMenu({ config }) {
 						</Formik>
 					</Flex>
 				</Box>
+
+				{/* Star Channel */}
+				<Box background={formBackground} rounded={6}>
+					<Flex p={2} width='fit-content'>
+						<Formik
+							initialValues={{ starchannel: config.starchannel }}
+							onSubmit={({ starchannel }) => {
+								updateGuild(config.guildid, 'starchannel', starchannel);
+								toast({
+									title: "Success!",
+									description: `Star Channel id set to ${starchannel.length > 0 ? starchannel : 'Null'}`,
+									status: "success",
+									duration: 3000,
+									isClosable: false,
+								})
+							}}>
+							{
+								(props) => (
+									<form onSubmit={props.handleSubmit}>
+										<Heading size='md'>Star Channel</Heading>
+										<Flex justify='center'>
+											<Select ml={2} name='starchannel' onChange={props.handleChange} defaultValue={config.starchannel}>
+												{config.channels.map((objects, index) => {
+													return (
+														// Name of Category
+														<optgroup key={objects.category} label={objects.category}>
+
+															{objects.channels.map((channel, ch) => {
+																// Name of Channel
+																return (
+																	channel.map((chan, i) => {
+																		return (
+																			<option key={chan.id} value={chan.id}>{chan.name}</option>
+																		);
+																	})
+																);
+															})}
+														</optgroup>
+													);
+												})}
+												<optgroup key='Clear' label='Reset Channel'><option key='none' value=''>Unset Channel</option></optgroup>
+											</Select>
+											<Button type='submit'>Save</Button>
+										</Flex>
+										<Text>Where should I post starred messages?</Text>
+									</form>
+								)
+							}
+						</Formik>
+					</Flex>
+				</Box>
+
+				{/* Twitter Channel */}
+				<Box background={formBackground} rounded={6}>
+					<Flex p={2} width='fit-content'>
+						<Formik
+							initialValues={{ twitterchannel: config.twitterchannel }}
+							onSubmit={({ twitterchannel }) => {
+								updateGuild(config.guildid, 'twitterchannel', twitterchannel);
+								toast({
+									title: "Success!",
+									description: `Twitter Channel id set to ${twitterchannel.length > 0 ? twitterchannel : 'Null'}`,
+									status: "success",
+									duration: 3000,
+									isClosable: false,
+								})
+							}}>
+							{
+								(props) => (
+									<form onSubmit={props.handleSubmit}>
+										<Heading size='md'>Twitter Channel</Heading>
+										<Flex justify='center'>
+											<Select ml={2} name='twitterchannel' onChange={props.handleChange} defaultValue={config.twitterchannel}>
+												{config.channels.map((objects, index) => {
+													return (
+														// Name of Category
+														<optgroup key={objects.category} label={objects.category}>
+
+															{objects.channels.map((channel, ch) => {
+																// Name of Channel
+																return (
+																	channel.map((chan, i) => {
+																		return (
+																			<option key={chan.id} value={chan.id}>{chan.name}</option>
+																		);
+																	})
+																);
+															})}
+														</optgroup>
+													);
+												})}
+												<optgroup key='Clear' label='Reset Channel'><option key='none' value=''>Unset Channel</option></optgroup>
+											</Select>
+											<Button type='submit'>Save</Button>
+										</Flex>
+										<Text>Where should I post Watched users Tweets?</Text>
+									</form>
+								)
+							}
+						</Formik>
+					</Flex>
+				</Box>
 			</SimpleGrid>
 		</Flex>
 	);
