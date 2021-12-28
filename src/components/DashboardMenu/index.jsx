@@ -574,6 +574,59 @@ export function DashboardMenu({ config }) {
 						</Formik>
 					</Flex>
 				</Box>
+
+				{/* Level Channel */}
+				<Box background={formBackground} rounded={6}>
+					<Flex p={2} width='fit-content'>
+						<Formik
+							initialValues={{ levelchannel: config.levelchannel }}
+							onSubmit={({ levelchannel }) => {
+								updateGuild(config.guildid, 'levelchannel', levelchannel);
+								toast({
+									title: 'Success!',
+									description: `Level Channel id set to ${levelchannel.length > 0 ? levelchannel : 'Null'}`,
+									status: 'success',
+									duration: 3000,
+									isClosable: false,
+								});
+							}}>
+							{(props) => (
+								<form onSubmit={props.handleSubmit}>
+									<Heading size='md'>Level Channel</Heading>
+									<Flex justify='center'>
+										<Select ml={2} name='levelchannel' onChange={props.handleChange} defaultValue={config.levelchannel}>
+											{config.channels.map((objects, index) => {
+												return (
+													// Name of Category
+													<optgroup key={objects.category} label={objects.category}>
+														{objects.channels.map((channel, ch) => {
+															// Name of Channel
+															return channel.map((chan, i) => {
+																return (
+																	<option key={chan.id} value={chan.id}>
+																		{chan.name}
+																	</option>
+																);
+															});
+														})}
+													</optgroup>
+												);
+											})}
+											<optgroup key='Clear' label='Reset Channel'>
+												<option key='none' value=''>
+													Unset Channel
+												</option>
+											</optgroup>
+										</Select>
+										<Button type='submit'>Save</Button>
+									</Flex>
+									<Text>Where should I post level up announcements?</Text>
+									<Text>(This also enables my level up feature!)</Text>
+								</form>
+							)}
+						</Formik>
+					</Flex>
+				</Box>
 			</SimpleGrid>
 		</Flex>
 	);
