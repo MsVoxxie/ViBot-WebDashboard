@@ -179,6 +179,70 @@ export function DashboardMenu({ config }) {
 					</Flex>
 				</Box>
 
+				{/* Spam Detection */}
+				<Box background={formBackground} rounded={6}>
+					<Flex p={2} width='fit-content'>
+						<Formik
+							initialValues={{ spamdetection: config.spamdetection }}
+							onSubmit={({ spamdetection }) => {
+								updateGuild(config.guildid, 'spamdetection', spamdetection);
+								toast({
+									title: 'Success!',
+									description: `spamdetection set to ${spamdetection}`,
+									status: 'success',
+									duration: 3000,
+									isClosable: false,
+								});
+							}}>
+							{(props) => (
+								<form onSubmit={props.handleSubmit}>
+									<Heading size='md'>Spam Detection</Heading>
+									<Flex justify='center'>
+										<Select ml={2} name='spamdetection' onChange={props.handleChange} placeholder={`Currently ${config.spamdetection === true ? 'Enabled' : 'Disabled'}`}>
+											<option value='true'>Enabled</option>
+											<option value='false'>Disabled</option>
+										</Select>
+										<Button type='submit'>Save</Button>
+									</Flex>
+									<Text>Should I timeout users for spamming?</Text>
+								</form>
+							)}
+						</Formik>
+					</Flex>
+				</Box>
+
+				{/* Kick New Accounts */}
+				<Box background={formBackground} rounded={6}>
+					<Flex p={2} width='fit-content'>
+						<Formik
+							initialValues={{ kicknew: config.kicknew }}
+							onSubmit={({ kicknew }) => {
+								updateGuild(config.guildid, 'kicknew', kicknew);
+								toast({
+									title: 'Success!',
+									description: `kicknew set to ${kicknew}`,
+									status: 'success',
+									duration: 3000,
+									isClosable: false,
+								});
+							}}>
+							{(props) => (
+								<form onSubmit={props.handleSubmit}>
+									<Heading size='md'>Kick New Accounts</Heading>
+									<Flex justify='center'>
+										<Select ml={2} name='kicknew' onChange={props.handleChange} placeholder={`Currently ${config.kicknew === true ? 'Enabled' : 'Disabled'}`}>
+											<option value='true'>Enabled</option>
+											<option value='false'>Disabled</option>
+										</Select>
+										<Button type='submit'>Save</Button>
+									</Flex>
+									<Text>Should kick accounts under 2 weeks old?</Text>
+								</form>
+							)}
+						</Formik>
+					</Flex>
+				</Box>
+
 				{/* Audit Channel */}
 				<Box background={formBackground} rounded={6}>
 					<Flex p={2} width='fit-content'>
