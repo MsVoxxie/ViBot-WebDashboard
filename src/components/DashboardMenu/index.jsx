@@ -1,16 +1,11 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { updateGuild } from '../../utils/api';
-<<<<<<< HEAD
 import { Box, Button, Flex, Heading, Input, Select, SimpleGrid, Text, useToast, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
-=======
-import { Box, Avatar, Heading, Flex } from '@chakra-ui/react';
->>>>>>> dfb06a97802d01c49f43e34b8a0188ae6530d5eb
 import { Link } from 'react-router-dom';
 import { useColorModeValue } from '@chakra-ui/color-mode';
 
 export function DashboardMenu({ config }) {
-<<<<<<< HEAD
 	const formBackground = useColorModeValue('gray.200', 'gray.700');
 	const toast = useToast();
 
@@ -698,38 +693,5 @@ export function DashboardMenu({ config }) {
 				</Box>
 			</SimpleGrid>
 		</Flex>
-=======
-	return (
-		//Servers
-		<Box
-			width='80px'
-			height='100%'
-			position='fixed'
-			overflow='scroll'
-			bg='secondary'
-			css={{
-				'::-webkit-scrollbar': {
-					display: 'none',
-				},
-			}}>
-			<Heading
-				justifyContent='center'
-				display='flex'
-				alignItems='center'
-				boxSizing='border-box'
-				boxShadow='0px 1px 25px 0px rgba(0,0,0,0.25)'
-				padding='20px 0px'>
-				<Avatar h='55px' w='55px' borderRadius='50px' />
-			</Heading>
-			{/* Content */}
-			<Flex display='flex' direction='column' alignItems='center' padding='20px 0px'>
-				<Avatar />
-				<Avatar />
-				<Avatar />
-				<Avatar />
-				<Avatar />
-			</Flex>
-		</Box>
->>>>>>> dfb06a97802d01c49f43e34b8a0188ae6530d5eb
 	);
 }

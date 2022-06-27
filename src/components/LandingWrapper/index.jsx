@@ -6,7 +6,7 @@ export function LandingComponent({ bot }) {
 	const { toggleColorMode } = useColorMode();
 	const formBackground = useColorModeValue('gray.200', 'gray.700');
 
-	const login = () => (window.location.href = 'https://api.voxxie.me:3001/api/auth/discord/');
+	const login = () => (window.location.href = 'https://api.voxxie.me/api/auth/discord/');
 
 	return (
 		<Flex height='100vh' alignItems='center' justifyContent='center'>
