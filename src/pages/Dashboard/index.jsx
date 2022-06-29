@@ -21,6 +21,7 @@ export function Dashboard({
         setLoading(false);
       })
       .catch((err) => {
+        console.log(err);
         history.push("/");
         setLoading(false);
       });

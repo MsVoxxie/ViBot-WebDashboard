@@ -22,6 +22,7 @@ export function Menu({
         setLoading(false);
       })
       .catch((err) => {
+        console.log(err);
         history.push("/");
         setLoading(false);
       });

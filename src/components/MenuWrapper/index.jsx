@@ -3,6 +3,8 @@ import { Avatar, Box, Button, Center, Flex, Heading, Spacer } from '@chakra-ui/r
 import { useColorModeValue } from '@chakra-ui/color-mode';
 import { Link } from 'react-router-dom';
 
+const RecirectURI = 'https://discord.com/api/oauth2/authorize?client_id=827375161665650689&redirect_uri=https%3A%2F%2Fapi.voxxie.me%2Fapi%2Fauth%2Fdiscord%2Fredirect&&response_type=code&permissions=1507532864727&scope=applications.commands%20bot';
+
 export function MenuComponent({ guilds }) {
 	const formBackground = useColorModeValue('gray.200', 'gray.700');
 
@@ -49,7 +51,7 @@ export function MenuComponent({ guilds }) {
 										<Avatar m={2} src={`https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`} />
 										<Heading size='md'>{guild.name}</Heading>
 										<Spacer />
-										<Button m={2} onClick={() => window.open('https://discord.com/api/oauth2/authorize?client_id=827375161665650689&redirect_uri=https%3A%2F%2Fapi.voxxie.me%3A3001%2Fapi%2Fauth%2Fdiscord%2Fredirect&response_type=code&permissions=2419453143&scope=applications.commands%20bot', 'name', 'width=500, height=680')}>
+										<Button m={2} onClick={() => window.open(RecirectURI, 'name', 'width=500, height=680')}>
 											Invite ViBot
 										</Button>
 									</Flex>
